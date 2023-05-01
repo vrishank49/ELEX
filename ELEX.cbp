@@ -45,10 +45,16 @@
 		<Unit filename="CBase4618.h" />
 		<Unit filename="CCamera.cpp" />
 		<Unit filename="CCamera.h" />
+		<Unit filename="CCar.cpp" />
+		<Unit filename="CCar.h" />
 		<Unit filename="CControlPi.cpp" />
 		<Unit filename="CControlPi.h" />
 		<Unit filename="CFinal.cpp" />
 		<Unit filename="CFinal.h" />
+		<Unit filename="CGuidance.cpp" />
+		<Unit filename="CGuidance.h" />
+		<Unit filename="CMotor.cpp" />
+		<Unit filename="CMotor.h" />
 		<Unit filename="CPong.cpp" />
 		<Unit filename="CPong.h" />
 		<Unit filename="CSort.cpp" />

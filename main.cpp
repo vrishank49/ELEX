@@ -202,8 +202,87 @@ void lab8()
 
 void lab9()
 {
-    CFinal finalproject;
-    finalproject.run();
+//gpioInitialise();
+    if (gpioInitialise() < 0)
+    {
+        std::cerr << "Failed to initialize GPIO." << std::endl;
+    }
+
+    gpioSetMode(17, PI_OUTPUT); //AIN1
+    gpioSetMode(27, PI_OUTPUT); //AIN2
+    gpioSetMode(22, PI_OUTPUT); //PWMA
+    gpioSetMode(18, PI_OUTPUT); //PWMB
+    gpioSetMode(23, PI_OUTPUT); //BIN2
+    gpioSetMode(24, PI_OUTPUT); //BIN1
+    gpioSetMode(25, PI_OUTPUT); //standby (activates|deactivates h bridge)
+
+    // setting PWMA
+    gpioSetPWMfrequency(22, 1000);
+    gpioSetPWMrange(22, 128);
+    gpioPWM(22, 127);
+
+    //setting PWMB
+    gpioSetPWMfrequency(18, 1000);
+    gpioSetPWMrange(18, 128);
+    gpioPWM(18, 127);
+
+    char kb_ctrl = 'x';
+
+    while(1)
+    {
+        std::cin >> kb_ctrl;
+        //kb_ctrl = cv::waitKey(1000);
+
+        switch (kb_ctrl)
+        {
+        case 'w'://53
+            std::cout << "go forward" << std::endl;
+            gpioWrite(25, 1); //activate h bridge
+            gpioWrite(17, 1); //move wheel A
+            gpioWrite(27, 0); //move wheel A
+            gpioWrite(24, 1); //move wheel B
+            gpioWrite(23, 0); //move wheel B
+            break;
+        case 'a'://49
+            std::cout << "turn left" << std::endl;
+            gpioWrite(25, 1); //activate h bridge
+            gpioWrite(17, 1); //move wheel A
+            gpioWrite(27, 0); //move wheel A
+            gpioWrite(24, 0); //move wheel B
+            gpioWrite(23, 1); //move wheel B
+            break;
+        case 's'://50
+            std::cout << "go backward" << std::endl;
+            gpioWrite(25, 1); //activate h bridge
+            gpioWrite(17, 0); //move wheel A
+            gpioWrite(27, 1); //move wheel A
+            gpioWrite(24, 0); //move wheel B
+            gpioWrite(23, 1); //move wheel B
+            break;
+        case 'd'://51
+            std::cout << "turn right" << std::endl;
+            gpioWrite(25, 1); //activate h bridge
+            gpioWrite(17, 0); //move wheel A
+            gpioWrite(27, 1); //move wheel A
+            gpioWrite(24, 1); //move wheel B
+            gpioWrite(23, 0); //move wheel B
+            break;
+            case 'x'://48
+            std::cout << "stop" << std::endl;
+            gpioWrite(25, 0); //deactivate h bridge
+            gpioWrite(17, 0); //move wheel A
+            gpioWrite(27, 0); //move wheel A
+            gpioWrite(24, 0); //move wheel B
+            gpioWrite(23, 0); //move wheel B
+
+            break;
+        default:
+            std::cout << "no valid commands" << std::endl;
+            break;
+        }
+    }
+
+    gpioTerminate();
 }
 
 int main (void) {

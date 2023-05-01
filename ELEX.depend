@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1682558792 source:/home/supra49/Desktop/ELEX/main.cpp
+1682963655 source:/home/supra49/Desktop/ELEX/main.cpp
 	<iostream>
 	"pigpio.h"
 	<opencv2/opencv.hpp>
@@ -699,8 +699,24 @@
 	"pigpio.h"
 	"CCamera.h"
 
-1682643017 source:/home/supra49/Desktop/ELEX/CFinal.cpp
+1682644506 source:/home/supra49/Desktop/ELEX/CFinal.cpp
 	"CFinal.h"
 	"cvui.h"
 	<opencv2/opencv.hpp>
+
+1682962731 source:/home/supra49/Desktop/ELEX/CMotor.cpp
+	"CMotor.h"
+
+1682963179 /home/supra49/Desktop/ELEX/CMotor.h
+
+1682962741 source:/home/supra49/Desktop/ELEX/CGuidance.cpp
+	"CGuidance.h"
+
+1682963301 /home/supra49/Desktop/ELEX/CGuidance.h
+	<opencv2/opencv.hpp>
+
+1682962751 source:/home/supra49/Desktop/ELEX/CCar.cpp
+	"CCar.h"
+
+1682963361 /home/supra49/Desktop/ELEX/CCar.h
 
