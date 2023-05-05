@@ -7,7 +7,8 @@
 #include "CBase4618.h"
 #include "CPong.h"
 #include "CSort.h"
-#include "CFinal.h"
+#include "CFinal.h" //OLD
+#include "CCar.h"
 
 std::string gstreamer_pipeline(int capture_width, int capture_height, int framerate, int display_width, int display_height) {
     return
@@ -34,6 +35,7 @@ void print_menu()
     std::cout << "\n(6) Lab 6 - Classic Arcade Game";
     std::cout << "\n(7) Lab 7 - Linux Port";
     std::cout << "\n(8) Lab 8 - Recycling Sorter";
+    std::cout << "\n(9) Lab 9 - Final Project";
     std::cout << "\n(0) Exit";
     std::cout << "\nCMD> ";
 }
@@ -200,89 +202,13 @@ void lab8()
     sorter.run();
 }
 
+////////////////////////////////////////////////////////////////
+// Lab 9 (FINAL PROJECT)
+////////////////////////////////////////////////////////////////
 void lab9()
 {
-//gpioInitialise();
-    if (gpioInitialise() < 0)
-    {
-        std::cerr << "Failed to initialize GPIO." << std::endl;
-    }
-
-    gpioSetMode(17, PI_OUTPUT); //AIN1
-    gpioSetMode(27, PI_OUTPUT); //AIN2
-    gpioSetMode(22, PI_OUTPUT); //PWMA
-    gpioSetMode(18, PI_OUTPUT); //PWMB
-    gpioSetMode(23, PI_OUTPUT); //BIN2
-    gpioSetMode(24, PI_OUTPUT); //BIN1
-    gpioSetMode(25, PI_OUTPUT); //standby (activates|deactivates h bridge)
-
-    // setting PWMA
-    gpioSetPWMfrequency(22, 1000);
-    gpioSetPWMrange(22, 128);
-    gpioPWM(22, 127);
-
-    //setting PWMB
-    gpioSetPWMfrequency(18, 1000);
-    gpioSetPWMrange(18, 128);
-    gpioPWM(18, 127);
-
-    char kb_ctrl = 'x';
-
-    while(1)
-    {
-        std::cin >> kb_ctrl;
-        //kb_ctrl = cv::waitKey(1000);
-
-        switch (kb_ctrl)
-        {
-        case 'w'://53
-            std::cout << "go forward" << std::endl;
-            gpioWrite(25, 1); //activate h bridge
-            gpioWrite(17, 1); //move wheel A
-            gpioWrite(27, 0); //move wheel A
-            gpioWrite(24, 1); //move wheel B
-            gpioWrite(23, 0); //move wheel B
-            break;
-        case 'a'://49
-            std::cout << "turn left" << std::endl;
-            gpioWrite(25, 1); //activate h bridge
-            gpioWrite(17, 1); //move wheel A
-            gpioWrite(27, 0); //move wheel A
-            gpioWrite(24, 0); //move wheel B
-            gpioWrite(23, 1); //move wheel B
-            break;
-        case 's'://50
-            std::cout << "go backward" << std::endl;
-            gpioWrite(25, 1); //activate h bridge
-            gpioWrite(17, 0); //move wheel A
-            gpioWrite(27, 1); //move wheel A
-            gpioWrite(24, 0); //move wheel B
-            gpioWrite(23, 1); //move wheel B
-            break;
-        case 'd'://51
-            std::cout << "turn right" << std::endl;
-            gpioWrite(25, 1); //activate h bridge
-            gpioWrite(17, 0); //move wheel A
-            gpioWrite(27, 1); //move wheel A
-            gpioWrite(24, 1); //move wheel B
-            gpioWrite(23, 0); //move wheel B
-            break;
-            case 'x'://48
-            std::cout << "stop" << std::endl;
-            gpioWrite(25, 0); //deactivate h bridge
-            gpioWrite(17, 0); //move wheel A
-            gpioWrite(27, 0); //move wheel A
-            gpioWrite(24, 0); //move wheel B
-            gpioWrite(23, 0); //move wheel B
-
-            break;
-        default:
-            std::cout << "no valid commands" << std::endl;
-            break;
-        }
-    }
-
-    gpioTerminate();
+CCar hydra;
+hydra.drive();
 }
 
 int main (void) {

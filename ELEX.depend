@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1682963655 source:/home/supra49/Desktop/ELEX/main.cpp
+1683250426 source:/home/supra49/Desktop/ELEX/main.cpp
 	<iostream>
 	"pigpio.h"
 	<opencv2/opencv.hpp>
@@ -9,8 +9,9 @@
 	"CPong.h"
 	"CSort.h"
 	"CFinal.h"
+	"CCar.h"
 
-1678769289 source:/home/supra49/Desktop/ELEX/CControlPi.cpp
+1683168419 source:/home/supra49/Desktop/ELEX/CControlPi.cpp
 	"CControlPi.h"
 	"pigpio.h"
 	<opencv2/opencv.hpp>
@@ -20,7 +21,7 @@
 	<unistd.h>
 	<fcntl.h>
 
-1678769053 /home/supra49/Desktop/ELEX/CControlPi.h
+1683168419 /home/supra49/Desktop/ELEX/CControlPi.h
 	<opencv2/opencv.hpp>
 
 1608580898 /usr/include/opencv4/opencv2/opencv.hpp
@@ -626,7 +627,7 @@
 1608580898 /usr/include/opencv4/opencv2/video/background_segm.hpp
 	"opencv2/core.hpp"
 
-1678328417 /home/supra49/Desktop/ELEX/cvui.h
+1683168419 /home/supra49/Desktop/ELEX/cvui.h
 	"cvui.h"
 	<opencv2/opencv.hpp>
 	"cvui.h"
@@ -647,15 +648,15 @@
 1608580898 /usr/include/opencv4/opencv2/core/core.hpp
 	"opencv2/core.hpp"
 
-1678411092 source:/home/supra49/Desktop/ELEX/CBase4618.cpp
+1683168419 source:/home/supra49/Desktop/ELEX/CBase4618.cpp
 	"CBase4618.h"
 	"cvui.h"
 	<opencv2/opencv.hpp>
 
-1678410139 /home/supra49/Desktop/ELEX/CBase4618.h
+1683168419 /home/supra49/Desktop/ELEX/CBase4618.h
 	"CControlPi.h"
 
-1678331685 source:/home/supra49/Desktop/ELEX/CPong.cpp
+1683168419 source:/home/supra49/Desktop/ELEX/CPong.cpp
 	"CPong.h"
 	"cvui.h"
 	<chrono>
@@ -665,41 +666,41 @@
 	"stdlib.h"
 	<opencv2/opencv.hpp>
 
-1678410577 /home/supra49/Desktop/ELEX/CPong.h
+1683168419 /home/supra49/Desktop/ELEX/CPong.h
 	"CBase4618.h"
 
 1678417015 source:/home/supra49/Desktop/ELEX/CRecyclingSort.cpp
 
-1678486773 source:/home/supra49/Desktop/ELEX/CCamera.cpp
+1683168419 source:/home/supra49/Desktop/ELEX/CCamera.cpp
 	"CCamera.h"
 	<opencv2/opencv.hpp>
 	"cvui.h"
 
-1678751990 /home/supra49/Desktop/ELEX/CCamera.h
+1683168419 /home/supra49/Desktop/ELEX/CCamera.h
 	<string>
 	<vector>
 	"CBase4618.h"
 
-1678846764 source:/home/supra49/Desktop/ELEX/CSort.cpp
+1683168419 source:/home/supra49/Desktop/ELEX/CSort.cpp
 	"CSort.h"
 	"cvui.h"
 	<opencv2/opencv.hpp>
 	"pigpio.h"
 
-1678817487 /home/supra49/Desktop/ELEX/CSort.h
+1683168419 /home/supra49/Desktop/ELEX/CSort.h
 	"CBase4618.h"
 	"CCamera.h"
 	"CControlPi.h"
 	"pigpio.h"
 
-1682642385 /home/supra49/Desktop/ELEX/CFinal.h
+1683168419 /home/supra49/Desktop/ELEX/CFinal.h
 	"CBase4618.h"
 	"CCamera.h"
 	"CControlPi.h"
 	"pigpio.h"
 	"CCamera.h"
 
-1682644506 source:/home/supra49/Desktop/ELEX/CFinal.cpp
+1683168419 source:/home/supra49/Desktop/ELEX/CFinal.cpp
 	"CFinal.h"
 	"cvui.h"
 	<opencv2/opencv.hpp>
@@ -719,4 +720,63 @@
 	"CCar.h"
 
 1682963361 /home/supra49/Desktop/ELEX/CCar.h
+
+1683254120 source:/home/supra49/Desktop/ELEX/src/CCar.cpp
+	"CCar.h"
+
+1683248279 source:/home/supra49/Desktop/ELEX/src/CCommunication.cpp
+	"CCommunication.h"
+
+1683248527 /home/supra49/Desktop/ELEX/include/CCommunication.h
+
+1683248218 source:/home/supra49/Desktop/ELEX/src/CMotor.cpp
+	"CMotor.h"
+
+1683251357 /home/supra49/Desktop/ELEX/include/CMotor.h
+
+1683255424 source:/home/supra49/Desktop/ELEX/src/CGuidance.cpp
+	"CGuidance.h"
+
+1683256094 /home/supra49/Desktop/ELEX/include/CGuidance.h
+	<opencv2/opencv.hpp>
+	<opencv2/aruco.hpp>
+
+1683254010 /home/supra49/Desktop/ELEX/include/CCar.h
+	"CMotor.h"
+	"CGuidance.h"
+	"CBase4618.h"
+	"pigpio.h"
+	"cvui.h"
+	<opencv2/opencv.hpp>
+
+1683168419 /home/supra49/Desktop/ELEX//CBase4618.h
+	"CControlPi.h"
+
+1683168419 /home/supra49/Desktop/ELEX//CControlPi.h
+	<opencv2/opencv.hpp>
+
+1683168419 /home/supra49/Desktop/ELEX//CCamera.h
+	<string>
+	<vector>
+	"CBase4618.h"
+
+1683168419 /home/supra49/Desktop/ELEX//cvui.h
+	"cvui.h"
+	<opencv2/opencv.hpp>
+	"cvui.h"
+	<iostream>
+	<vector>
+	<map>
+	<stdarg.h>
+	<opencv2/imgproc/imgproc.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/core/core.hpp>
+
+1608574447 /usr/include/opencv4/opencv2/aruco.hpp
+	<opencv2/core.hpp>
+	<vector>
+	"opencv2/aruco/dictionary.hpp"
+
+1608574447 /usr/include/opencv4/opencv2/aruco/dictionary.hpp
+	<opencv2/core.hpp>
 

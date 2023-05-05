@@ -13,13 +13,12 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add option="`pkg-config --cflags opencv4` -std=c++11" />
+					<Add option="`pkg-config --cflags opencv4` -std=c++11 -c" />
 					<Add directory="include" />
 					<Add directory="./" />
 				</Compiler>
 				<Linker>
-					<Add option="`pkg-config --libs opencv4` -std=c++11" />
-					<Add option="-lpigpio -lrt -lpthread" />
+					<Add option="`pkg-config --libs opencv4` -std=c++11 -lpigpio -lrt -lpthread" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -45,21 +44,23 @@
 		<Unit filename="CBase4618.h" />
 		<Unit filename="CCamera.cpp" />
 		<Unit filename="CCamera.h" />
-		<Unit filename="CCar.cpp" />
-		<Unit filename="CCar.h" />
 		<Unit filename="CControlPi.cpp" />
 		<Unit filename="CControlPi.h" />
 		<Unit filename="CFinal.cpp" />
 		<Unit filename="CFinal.h" />
-		<Unit filename="CGuidance.cpp" />
-		<Unit filename="CGuidance.h" />
-		<Unit filename="CMotor.cpp" />
-		<Unit filename="CMotor.h" />
 		<Unit filename="CPong.cpp" />
 		<Unit filename="CPong.h" />
 		<Unit filename="CSort.cpp" />
 		<Unit filename="CSort.h" />
+		<Unit filename="include/CCar.h" />
+		<Unit filename="include/CCommunication.h" />
+		<Unit filename="include/CGuidance.h" />
+		<Unit filename="include/CMotor.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/CCar.cpp" />
+		<Unit filename="src/CCommunication.cpp" />
+		<Unit filename="src/CGuidance.cpp" />
+		<Unit filename="src/CMotor.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
