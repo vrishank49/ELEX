@@ -3,35 +3,20 @@
 CCar::CCar() {
 
     if (gpioInitialise() < 0) // check to initialize GPIO
-    {
+    {                         // GPIO initialize in CCar instead of CMotors incase I have other
+                              // inputs for GPIO
         std::cerr << "Failed to initialize GPIO." << std::endl;
     }
 
     kb_ctrl = 'x';
-
-    gpioSetMode(AIN1, PI_OUTPUT); //AIN1
-    gpioSetMode(AIN2, PI_OUTPUT); //AIN2
-    gpioSetMode(PWMA, PI_OUTPUT); //PWMA
-    gpioSetMode(PWMB, PI_OUTPUT); //PWMB
-    gpioSetMode(BIN2, PI_OUTPUT); //BIN2
-    gpioSetMode(BIN1, PI_OUTPUT); //BIN1
-    gpioSetMode(STANDBY, PI_OUTPUT); //standby (activates|deactivates h bridge)
-
-    // setting PWMA
-    gpioSetPWMfrequency(PWMA, PWM_FREQ);
-    gpioSetPWMrange(PWMA, PWM_RANGE);
-    gpioPWM(PWMA, PWM_DUTYCYCLE);
-
-    //setting PWMB
-    gpioSetPWMfrequency(PWMB, PWM_FREQ);
-    gpioSetPWMrange(PWMB, PWM_RANGE);
-    gpioPWM(PWMB, PWM_DUTYCYCLE);
+    running = true;
 
     cv::namedWindow(HYDRACAM_TITLE, cv::WINDOW_NORMAL); // Create window with normal dimensions
     cv::resizeWindow(HYDRACAM_TITLE, 640, 480); // Set window size
     cvui::init(HYDRACAM_TITLE);
 
-    running = true;
+    time = 1; // placeholder until I find out what this is for (autonomous?)
+
 }
 
 CCar::~CCar() {
@@ -40,60 +25,78 @@ CCar::~CCar() {
 
 void CCar::drive() {
 
-while(running) // John's old motor control code
-    {
+    std::thread drivethread([&]() {
+        while (running) {
+            motorcontrol();
+        }
+    });
 
-    _guidance.get_im(hydraframe);
-    _guidance.detectMarkers(hydraframe);
-    cv::imshow(HYDRACAM_TITLE, hydraframe);
+    std::thread imagethread(&CCar::imageprocess, this);
 
-    kb_ctrl = cv::waitKey(10);
-    //std::cin >> kb_ctrl;
+    std::thread videothread(&CCar::imagedisplay, this);
 
+    drivethread.join();
+    imagethread.join();
+    videothread.join();
+}
+
+void CCar::motorcontrol() {
+    std::lock_guard<std::mutex> lock(_mutex);
+
+    kb_ctrl = cv::waitKey(1);
         switch (kb_ctrl)
         {
         case 'w'://53
             std::cout << "go forward" << std::endl;
-            gpioWrite(STANDBY, 1); //activate h bridge
-            gpioWrite(AIN1, 1); //move wheel A
-            gpioWrite(AIN2, 0); //move wheel A
-            gpioWrite(BIN1, 1); //move wheel B
-            gpioWrite(BIN2, 0); //move wheel B
+            _motors.forward(time);
             break;
         case 'a'://49
             std::cout << "turn left" << std::endl;
-            gpioWrite(STANDBY, 1); //activate h bridge
-            gpioWrite(AIN1, 1); //move wheel A
-            gpioWrite(AIN2, 0); //move wheel A
-            gpioWrite(BIN1, 0); //move wheel B
-            gpioWrite(BIN2, 1); //move wheel B
+            _motors.left(time);
             break;
         case 's'://50
             std::cout << "go backward" << std::endl;
-            gpioWrite(STANDBY, 1); //activate h bridge
-            gpioWrite(AIN1, 0); //move wheel A
-            gpioWrite(AIN2, 1); //move wheel A
-            gpioWrite(BIN1, 0); //move wheel B
-            gpioWrite(BIN2, 1); //move wheel B
+            _motors.backward(time);
             break;
         case 'd'://51
             std::cout << "turn right" << std::endl;
-            gpioWrite(STANDBY, 1); //activate h bridge
-            gpioWrite(AIN1, 0); //move wheel A
-            gpioWrite(AIN2, 1); //move wheel A
-            gpioWrite(BIN1, 1); //move wheel B
-            gpioWrite(BIN2, 0); //move wheel B
+            _motors.right(time);
             break;
         default:
             std::cout << "stop" << std::endl;
-            gpioWrite(STANDBY, 0); //deactivate h bridge
-            gpioWrite(AIN1, 0); //move wheel A
-            gpioWrite(AIN1, 0); //move wheel A
-            gpioWrite(BIN1, 0); //move wheel B
-            gpioWrite(BIN2, 0); //move wheel B
+            _motors.stop();
             break;
+        }
+}
+
+void CCar::imageprocess() {
+
+    while (running) {
+            cv::Mat tempframe;
+            _guidance.get_im(tempframe);
+            _guidance.detectMarkers(tempframe);
+
+            { // {} to ensure lock gets released after clone completes
+                std::lock_guard<std::mutex> lock(_mutex);
+                hydraframe = tempframe.clone();
+            }
+
+        }
+}
+
+void CCar::imagedisplay() {
+    while (running) {
+        cv::Mat displayframe;
+
+        { // ensure lock gets released after clone completes
+            std::lock_guard<std::mutex> lock(_mutex);
+            displayframe = hydraframe.clone();
+        }
+
+        if (!displayframe.empty()) { // check if the frame is not empty
+            cv::imshow(HYDRACAM_TITLE, displayframe);
+            //cv::waitKey(1);
         }
     }
 }
-
 

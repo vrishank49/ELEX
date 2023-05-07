@@ -1,3 +1,6 @@
+#include "pigpio.h"
+#include <iostream>
+
 #define AIN1 17
 #define AIN2 27
 #define PWMA 22
@@ -25,4 +28,5 @@ public:
     void backward(float time);
     void left(float time);
     void right(float time);
+    void gpio_init(); // to set GPIO PINMAP cleanly
 };

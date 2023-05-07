@@ -207,8 +207,8 @@ void lab8()
 ////////////////////////////////////////////////////////////////
 void lab9()
 {
-CCar hydra;
-hydra.drive();
+    CCar hydra;
+    hydra.drive();
 }
 
 int main (void) {

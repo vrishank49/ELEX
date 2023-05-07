@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1683250426 source:/home/supra49/Desktop/ELEX/main.cpp
+1683421665 source:/home/supra49/Desktop/ELEX/main.cpp
 	<iostream>
 	"pigpio.h"
 	<opencv2/opencv.hpp>
@@ -721,7 +721,7 @@
 
 1682963361 /home/supra49/Desktop/ELEX/CCar.h
 
-1683309091 source:/home/supra49/Desktop/ELEX/src/CCar.cpp
+1683425384 source:/home/supra49/Desktop/ELEX/src/CCar.cpp
 	"CCar.h"
 
 1683248279 source:/home/supra49/Desktop/ELEX/src/CCommunication.cpp
@@ -729,10 +729,12 @@
 
 1683248527 /home/supra49/Desktop/ELEX/include/CCommunication.h
 
-1683248218 source:/home/supra49/Desktop/ELEX/src/CMotor.cpp
+1683424226 source:/home/supra49/Desktop/ELEX/src/CMotor.cpp
 	"CMotor.h"
 
-1683251357 /home/supra49/Desktop/ELEX/include/CMotor.h
+1683424226 /home/supra49/Desktop/ELEX/include/CMotor.h
+	"pigpio.h"
+	<iostream>
 
 1683305977 source:/home/supra49/Desktop/ELEX/src/CGuidance.cpp
 	"CGuidance.h"
@@ -742,14 +744,15 @@
 	<opencv2/aruco.hpp>
 	"cvui.h"
 
-1683307389 /home/supra49/Desktop/ELEX/include/CCar.h
+1683425199 /home/supra49/Desktop/ELEX/include/CCar.h
 	"CMotor.h"
 	"CGuidance.h"
 	"CBase4618.h"
-	"pigpio.h"
 	"cvui.h"
 	<opencv2/opencv.hpp>
+	<iostream>
 	<thread>
+	<mutex>
 
 1683168419 /home/supra49/Desktop/ELEX//CBase4618.h
 	"CControlPi.h"

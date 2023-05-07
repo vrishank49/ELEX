@@ -2,11 +2,12 @@
 #include "CMotor.h"
 #include "CGuidance.h"
 #include "CBase4618.h"
-//#include "CCamera.h"
-#include "pigpio.h"
+
 #include "cvui.h"
 #include <opencv2/opencv.hpp>
+#include <iostream>
 #include <thread>
+#include <mutex>
 
 #define HYDRACAM_TITLE "HYDRA CAM (.Y.)"
 
@@ -18,7 +19,7 @@ private:
     CGuidance _guidance;
     cv::Mat hydraframe;
 
-    std::mutex hydra_mutex;
+    std::mutex _mutex;
 
     bool running;
 
@@ -29,10 +30,16 @@ public:
     CCar();
     ~CCar();
 
-    std::thread drivethread();
-    std::thread imagethread(cv::Mat &hydraframe, std::mutex& frame_mutex);
+    float time;
+
+    //std::thread drivethread();
+    //std::thread imagethread(cv::Mat &hydraframe);
 
     char kb_ctrl;
 
     void drive();
+
+    void motorcontrol();
+    void imageprocess();
+    void imagedisplay();
 };
