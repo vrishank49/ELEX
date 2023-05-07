@@ -39,67 +39,61 @@ CCar::~CCar() {
 }
 
 void CCar::drive() {
+
 while(running) // John's old motor control code
     {
-    // CAMERA CODE FOR ARUCO DETECTION
+
     _guidance.get_im(hydraframe);
+    _guidance.detectMarkers(hydraframe);
     cv::imshow(HYDRACAM_TITLE, hydraframe);
 
-    // JOHN'S OLD MOTOR CONTROL CODE - MOVE TO CMOTORS WHEN WE HAVE TIME
-        //std::cin >> kb_ctrl;
-        kb_ctrl = cv::waitKey(1);
+    kb_ctrl = cv::waitKey(10);
+    //std::cin >> kb_ctrl;
 
         switch (kb_ctrl)
         {
         case 'w'://53
             std::cout << "go forward" << std::endl;
-            gpioWrite(25, 1); //activate h bridge
-            gpioWrite(17, 1); //move wheel A
-            gpioWrite(27, 0); //move wheel A
-            gpioWrite(24, 1); //move wheel B
-            gpioWrite(23, 0); //move wheel B
+            gpioWrite(STANDBY, 1); //activate h bridge
+            gpioWrite(AIN1, 1); //move wheel A
+            gpioWrite(AIN2, 0); //move wheel A
+            gpioWrite(BIN1, 1); //move wheel B
+            gpioWrite(BIN2, 0); //move wheel B
             break;
         case 'a'://49
             std::cout << "turn left" << std::endl;
-            gpioWrite(25, 1); //activate h bridge
-            gpioWrite(17, 1); //move wheel A
-            gpioWrite(27, 0); //move wheel A
-            gpioWrite(24, 0); //move wheel B
-            gpioWrite(23, 1); //move wheel B
+            gpioWrite(STANDBY, 1); //activate h bridge
+            gpioWrite(AIN1, 1); //move wheel A
+            gpioWrite(AIN2, 0); //move wheel A
+            gpioWrite(BIN1, 0); //move wheel B
+            gpioWrite(BIN2, 1); //move wheel B
             break;
         case 's'://50
             std::cout << "go backward" << std::endl;
-            gpioWrite(25, 1); //activate h bridge
-            gpioWrite(17, 0); //move wheel A
-            gpioWrite(27, 1); //move wheel A
-            gpioWrite(24, 0); //move wheel B
-            gpioWrite(23, 1); //move wheel B
+            gpioWrite(STANDBY, 1); //activate h bridge
+            gpioWrite(AIN1, 0); //move wheel A
+            gpioWrite(AIN2, 1); //move wheel A
+            gpioWrite(BIN1, 0); //move wheel B
+            gpioWrite(BIN2, 1); //move wheel B
             break;
         case 'd'://51
             std::cout << "turn right" << std::endl;
-            gpioWrite(25, 1); //activate h bridge
-            gpioWrite(17, 0); //move wheel A
-            gpioWrite(27, 1); //move wheel A
-            gpioWrite(24, 1); //move wheel B
-            gpioWrite(23, 0); //move wheel B
-            break;
-            case 'x'://48
-            std::cout << "stop" << std::endl;
-            gpioWrite(25, 0); //deactivate h bridge
-            gpioWrite(17, 0); //move wheel A
-            gpioWrite(27, 0); //move wheel A
-            gpioWrite(24, 0); //move wheel B
-            gpioWrite(23, 0); //move wheel B
-
+            gpioWrite(STANDBY, 1); //activate h bridge
+            gpioWrite(AIN1, 0); //move wheel A
+            gpioWrite(AIN2, 1); //move wheel A
+            gpioWrite(BIN1, 1); //move wheel B
+            gpioWrite(BIN2, 0); //move wheel B
             break;
         default:
             std::cout << "stop" << std::endl;
-            gpioWrite(25, 0); //deactivate h bridge
-            gpioWrite(17, 0); //move wheel A
-            gpioWrite(27, 0); //move wheel A
-            gpioWrite(24, 0); //move wheel B
-            gpioWrite(23, 0); //move wheel B
+            gpioWrite(STANDBY, 0); //deactivate h bridge
+            gpioWrite(AIN1, 0); //move wheel A
+            gpioWrite(AIN1, 0); //move wheel A
+            gpioWrite(BIN1, 0); //move wheel B
+            gpioWrite(BIN2, 0); //move wheel B
             break;
         }
     }
 }
+
+

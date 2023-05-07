@@ -1,5 +1,6 @@
 #include "CGuidance.h"
 
+
 std::string CGuidance::gstreamer_pipeline(int capture_width, int capture_height, int framerate, int display_width, int display_height) {
     return
             " libcamerasrc ! video/x-raw, "
@@ -14,11 +15,11 @@ std::string CGuidance::gstreamer_pipeline(int capture_width, int capture_height,
 
 CGuidance::CGuidance()
 {
-    capture_width = 1280;
-    capture_height = 720;
-    framerate = 60;
+    capture_width = 640;
+    capture_height = 480;
+    framerate = 15;
     display_width = 640;
-    display_height = 360;
+    display_height = 480;
 
     pipeline = gstreamer_pipeline(capture_width, capture_height, framerate, display_width, display_height);
     cap.open(pipeline, cv::CAP_GSTREAMER);
@@ -41,9 +42,8 @@ void CGuidance::update()
     }
 }
 
-void CGuidance::detectMarkers()
+void CGuidance::detectMarkers(cv::Mat &_frame)
 {
-      cv::Mat _frame;
       cap >> _frame;
 
       if (_frame.empty() == false)
@@ -52,6 +52,8 @@ void CGuidance::detectMarkers()
         if (ids.size() > 0)
         {
           cv::aruco::drawDetectedMarkers(_frame, corners, ids);
+          for (int i = 0; i < ids.size(); i++)
+            std::cout << "Detected Marker #" << ids[i] << std::endl;
         }
       }
 }

@@ -721,7 +721,7 @@
 
 1682963361 /home/supra49/Desktop/ELEX/CCar.h
 
-1683254120 source:/home/supra49/Desktop/ELEX/src/CCar.cpp
+1683309091 source:/home/supra49/Desktop/ELEX/src/CCar.cpp
 	"CCar.h"
 
 1683248279 source:/home/supra49/Desktop/ELEX/src/CCommunication.cpp
@@ -734,20 +734,22 @@
 
 1683251357 /home/supra49/Desktop/ELEX/include/CMotor.h
 
-1683255424 source:/home/supra49/Desktop/ELEX/src/CGuidance.cpp
+1683305977 source:/home/supra49/Desktop/ELEX/src/CGuidance.cpp
 	"CGuidance.h"
 
-1683256094 /home/supra49/Desktop/ELEX/include/CGuidance.h
+1683305464 /home/supra49/Desktop/ELEX/include/CGuidance.h
 	<opencv2/opencv.hpp>
 	<opencv2/aruco.hpp>
+	"cvui.h"
 
-1683254010 /home/supra49/Desktop/ELEX/include/CCar.h
+1683307389 /home/supra49/Desktop/ELEX/include/CCar.h
 	"CMotor.h"
 	"CGuidance.h"
 	"CBase4618.h"
 	"pigpio.h"
 	"cvui.h"
 	<opencv2/opencv.hpp>
+	<thread>
 
 1683168419 /home/supra49/Desktop/ELEX//CBase4618.h
 	"CControlPi.h"
