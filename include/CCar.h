@@ -1,7 +1,8 @@
-//#include "CServer.h"
 #include "CMotor.h"
 #include "CGuidance.h"
 #include "CBase4618.h"
+#include "CSound.h"
+#include "server.h"
 
 #include "cvui.h"
 #include <opencv2/opencv.hpp>
@@ -10,14 +11,17 @@
 #include <mutex>
 
 #define HYDRACAM_TITLE "HYDRA CAM (.Y.)"
+#define PORT 5035
+
+#define LED_1 6
 
 class CCar
 {
 private:
-    //CServer _server;
+    CServer _server;
     CMotor _motors;
     CGuidance _guidance;
-    cv::Mat hydraframe;
+    CSound _sound;
 
     std::mutex _mutex;
 
@@ -27,10 +31,12 @@ private:
     static void imagethrd(CCar *ptr);
 
 public:
+    cv::Mat hydraframe;
     CCar();
     ~CCar();
 
     float time;
+    std::vector<std::string> cmds;
 
     //std::thread drivethread();
     //std::thread imagethread(cv::Mat &hydraframe);
@@ -39,7 +45,10 @@ public:
 
     void drive();
 
-    void motorcontrol();
+    void serverinit(CServer* server);
+    void motorcontrol(const std::string& key);
     void imageprocess();
     void imagedisplay();
+
+    void servocontrol(int ms);
 };

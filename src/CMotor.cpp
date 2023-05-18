@@ -27,6 +27,8 @@ void CMotor::gpio_init() {
     gpioSetMode(BIN1, PI_OUTPUT); //BIN1
     gpioSetMode(STANDBY, PI_OUTPUT); //standby (activates|deactivates h bridge)
 
+    gpioSetMode(SHOOT_SERVO, PI_OUTPUT);
+
         // setting PWMA default
     gpioSetPWMfrequency(PWMA, PWM_FREQ);
     gpioSetPWMrange(PWMA, PWM_RANGE);

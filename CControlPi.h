@@ -50,7 +50,7 @@
 #define COM5 5
 #define COM9 9
 
-#define SERVO_1 27
+#define SERVO_1 26
 #define SERVO_2 22
 
 #define SERVO_1_RANGE_LOW 500

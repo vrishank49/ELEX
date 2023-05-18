@@ -21,7 +21,7 @@
 	<unistd.h>
 	<fcntl.h>
 
-1683168419 /home/supra49/Desktop/ELEX/CControlPi.h
+1683687117 /home/supra49/Desktop/ELEX/CControlPi.h
 	<opencv2/opencv.hpp>
 
 1608580898 /usr/include/opencv4/opencv2/opencv.hpp
@@ -721,22 +721,39 @@
 
 1682963361 /home/supra49/Desktop/ELEX/CCar.h
 
-1683425384 source:/home/supra49/Desktop/ELEX/src/CCar.cpp
+1684372708 source:/home/supra49/Desktop/ELEX/src/CCar.cpp
 	"CCar.h"
 
-1683248279 source:/home/supra49/Desktop/ELEX/src/CCommunication.cpp
+1684360994 source:/home/supra49/Desktop/ELEX/src/CCommunication.cpp
 	"CCommunication.h"
+	"server.h"
+	<sys/types.h>
+	<stdlib.h>
+	<unistd.h>
+	<sys/socket.h>
+	<sys/ioctl.h>
+	<fcntl.h>
+	<netinet/in.h>
+	<netdb.h>
+	<thread>
 
-1683248527 /home/supra49/Desktop/ELEX/include/CCommunication.h
+1684360994 /home/supra49/Desktop/ELEX/include/CCommunication.h
+	<iostream>
+	<string>
+	<mutex>
+	<vector>
+	<opencv2/opencv.hpp>
+	<opencv2/opencv.hpp>
+	<X11/Xlib.h>
 
-1683424226 source:/home/supra49/Desktop/ELEX/src/CMotor.cpp
+1683686940 source:/home/supra49/Desktop/ELEX/src/CMotor.cpp
 	"CMotor.h"
 
-1683424226 /home/supra49/Desktop/ELEX/include/CMotor.h
+1683856472 /home/supra49/Desktop/ELEX/include/CMotor.h
 	"pigpio.h"
 	<iostream>
 
-1683305977 source:/home/supra49/Desktop/ELEX/src/CGuidance.cpp
+1684369225 source:/home/supra49/Desktop/ELEX/src/CGuidance.cpp
 	"CGuidance.h"
 
 1683305464 /home/supra49/Desktop/ELEX/include/CGuidance.h
@@ -744,10 +761,12 @@
 	<opencv2/aruco.hpp>
 	"cvui.h"
 
-1683425199 /home/supra49/Desktop/ELEX/include/CCar.h
+1684372633 /home/supra49/Desktop/ELEX/include/CCar.h
 	"CMotor.h"
 	"CGuidance.h"
 	"CBase4618.h"
+	"CSound.h"
+	"server.h"
 	"cvui.h"
 	<opencv2/opencv.hpp>
 	<iostream>
@@ -757,7 +776,7 @@
 1683168419 /home/supra49/Desktop/ELEX//CBase4618.h
 	"CControlPi.h"
 
-1683168419 /home/supra49/Desktop/ELEX//CControlPi.h
+1683687117 /home/supra49/Desktop/ELEX//CControlPi.h
 	<opencv2/opencv.hpp>
 
 1683168419 /home/supra49/Desktop/ELEX//CCamera.h
@@ -784,4 +803,46 @@
 
 1608574447 /usr/include/opencv4/opencv2/aruco/dictionary.hpp
 	<opencv2/core.hpp>
+
+1683760831 /home/supra49/Desktop/ELEX/include/CSound.h
+	<iostream>
+	<pigpio.h>
+	<fstream>
+
+1683762397 source:/home/supra49/Desktop/ELEX/src/CSound.cpp
+	"CSound.h"
+	<fstream>
+	<pigpio.h>
+	<iostream>
+
+1684363438 /home/supra49/Desktop/ELEX//server.h
+	<iostream>
+	<string>
+	<mutex>
+	<vector>
+	<opencv2/opencv.hpp>
+	<opencv2/opencv.hpp>
+	<X11/Xlib.h>
+
+1684363438 source:/home/supra49/Desktop/ELEX/server.cpp
+	"server.h"
+	"Winsock2.h"
+	<sys/types.h>
+	<stdlib.h>
+	<unistd.h>
+	<sys/socket.h>
+	<sys/ioctl.h>
+	<fcntl.h>
+	<netinet/in.h>
+	<netdb.h>
+	<thread>
+
+1684363438 /home/supra49/Desktop/ELEX/server.h
+	<iostream>
+	<string>
+	<mutex>
+	<vector>
+	<opencv2/opencv.hpp>
+	<opencv2/opencv.hpp>
+	<X11/Xlib.h>
 

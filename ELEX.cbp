@@ -56,11 +56,15 @@
 		<Unit filename="include/CCommunication.h" />
 		<Unit filename="include/CGuidance.h" />
 		<Unit filename="include/CMotor.h" />
+		<Unit filename="include/CSound.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="server.cpp" />
+		<Unit filename="server.h" />
 		<Unit filename="src/CCar.cpp" />
 		<Unit filename="src/CCommunication.cpp" />
 		<Unit filename="src/CGuidance.cpp" />
 		<Unit filename="src/CMotor.cpp" />
+		<Unit filename="src/CSound.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

@@ -10,8 +10,10 @@
 #define STANDBY 25
 
 #define PWM_FREQ 1000
-#define PWM_RANGE 255
+#define PWM_RANGE 512
 #define PWM_DUTYCYCLE 255
+
+#define SHOOT_SERVO 26
 
 class CMotor
 {
